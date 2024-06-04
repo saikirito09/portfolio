@@ -208,6 +208,68 @@ h1 {
     }
 }
 
+/* Experience section */
+.experience {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8vh 0;
+}
+
+.experience h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 40px;
+}
+
+.experience-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.experience-item {
+    flex: 1 1 calc(50% - 40px);
+    box-sizing: border-box;
+}
+
+.experience-item h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #111111;
+}
+
+.experience-item p {
+    font-size: 1.125rem;
+    color: #666666;
+    margin: 4px 0;
+}
+
+@media screen and (max-width: 767px) {
+    .experience {
+        margin: 0 20px;
+        max-width: 100%;
+        padding: 4vh 0;
+    }
+    .experience h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .experience-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .experience-item {
+        flex: 1 1 100%;
+    }
+    .experience-item h3 {
+        font-size: 1.25rem;
+    }
+    .experience-item p {
+        font-size: 1rem;
+    }
+}
+
 /* Work section */
 .grid {
     display: flex;
