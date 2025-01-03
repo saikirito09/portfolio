@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import {
-  Menu,
-  X,
   Sparkles,
   Github,
   Linkedin,
@@ -13,7 +11,7 @@ import {
   Send,
 } from "lucide-react";
 
-const MangaPortfolio = () => {
+const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("about");
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -280,4 +278,4 @@ const MangaPortfolio = () => {
   );
 };
 
-export default MangaPortfolio;
+export default Portfolio;
