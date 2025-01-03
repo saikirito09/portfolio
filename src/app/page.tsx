@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactElement } from "react";
 import {
   Sparkles,
   Github,
@@ -11,15 +11,41 @@ import {
   Send,
 } from "lucide-react";
 
-const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState("about");
+type Section = "about" | "projects" | "skills" | "contact";
+
+interface Project {
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+  status: string;
+}
+
+interface Skill {
+  name: string;
+  level: number;
+  icon: string;
+}
+
+interface Contact {
+  icon: ReactElement;
+  text: string;
+}
+
+interface NavButtonProps {
+  section: Section;
+  icon: ReactElement;
+}
+
+const MangaPortfolio = () => {
+  const [activeSection, setActiveSection] = useState<Section>("about");
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
-  const projects = [
+  const projects: Project[] = [
     {
       title: "デジタルの冒険",
       subtitle: "Digital Adventure",
@@ -44,7 +70,7 @@ const Portfolio = () => {
     },
   ];
 
-  const skills = [
+  const skills: Skill[] = [
     { name: "Frontend Development", level: 90, icon: "⚡️" },
     { name: "Backend Architecture", level: 85, icon: "🔮" },
     { name: "System Design", level: 88, icon: "💫" },
@@ -52,7 +78,7 @@ const Portfolio = () => {
     { name: "API Development", level: 87, icon: "🌟" },
   ];
 
-  const NavButton = ({ section, icon }) => (
+  const NavButton: React.FC<NavButtonProps> = ({ section, icon }) => (
     <button
       onClick={() => setActiveSection(section)}
       className={`
@@ -65,6 +91,15 @@ const Portfolio = () => {
       <span className="uppercase tracking-wider">{section}</span>
     </button>
   );
+
+  const contacts: Contact[] = [
+    { icon: <Mail className="w-6 h-6" />, text: "email@example.com" },
+    { icon: <Github className="w-6 h-6" />, text: "github.com/username" },
+    {
+      icon: <Linkedin className="w-6 h-6" />,
+      text: "linkedin.com/in/username",
+    },
+  ];
 
   return (
     <div
@@ -239,20 +274,7 @@ const Portfolio = () => {
                 GET IN TOUCH
               </h2>
               <div className="space-y-6">
-                {[
-                  {
-                    icon: <Mail className="w-6 h-6" />,
-                    text: "email@example.com",
-                  },
-                  {
-                    icon: <Github className="w-6 h-6" />,
-                    text: "github.com/username",
-                  },
-                  {
-                    icon: <Linkedin className="w-6 h-6" />,
-                    text: "linkedin.com/in/username",
-                  },
-                ].map((contact, index) => (
+                {contacts.map((contact, index) => (
                   <div
                     key={index}
                     className="group relative p-4 border-4 border-black bg-white
@@ -278,4 +300,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default MangaPortfolio;
